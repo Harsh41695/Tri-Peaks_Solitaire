@@ -9035,8 +9035,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1368654577}
   - component: {fileID: 1368654579}
-  - component: {fileID: 1368654578}
   - component: {fileID: 1368654580}
+  - component: {fileID: 1368654578}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -9110,7 +9110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1368654576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab966153ad841b343af781f737a977eb, type: 3}
+  m_Script: {fileID: 11500000, guid: bb4c16762d7bf6b4f9e35ce868b77261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wasteParent: {fileID: 0}
