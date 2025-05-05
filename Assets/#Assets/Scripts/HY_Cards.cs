@@ -62,15 +62,21 @@ public class HY_Cards : MonoBehaviour,IPointerDownHandler
             HY_DeckManager._instacne.RemoveCard(this);
             FlipCardManager.InvokeCardFlip(this);
 
-           // print(HY_DeckManager._instacne.GetCardIndex(this));
+            // print(HY_DeckManager._instacne.GetCardIndex(this));
+            if (WastePileManager.Instance.WastePile.Contains(this))
+            {
+                HY_DeckManager._instacne.checkFacedCard.Remove(this); 
+            }
 
         }
+            HY_DeckManager._instacne.CheckWinCondition();
 
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         ClickCheck();
+        
     }
     
    private void OnCardCollectedCalled(HY_Cards index)

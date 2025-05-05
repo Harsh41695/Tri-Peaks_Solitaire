@@ -22,7 +22,7 @@ public class HY_DeckManager : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    int count;  
+    int count;
     //    [SerializeField]
     //    private List<GameObject> deck = new List<GameObject>(); 
     private string[] suits = { "Club", "Diamond", "Heart", "Spades" };
@@ -51,7 +51,7 @@ public class HY_DeckManager : MonoBehaviour, IPointerDownHandler
     private List<HY_Cards> faceUpCards = new List<HY_Cards>();// Faced up Cards
 
 
-    [SerializeField]List<HY_Cards> checkFacedCard = new List<HY_Cards>();
+    public List<HY_Cards> checkFacedCard = new List<HY_Cards>();
 
 
     private void Awake()
@@ -140,7 +140,7 @@ public class HY_DeckManager : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
-        CheckWinCondition();
+        // CheckWinCondition();
     }
 
     public bool IsDrawCard(HY_Cards card)
@@ -188,6 +188,7 @@ public class HY_DeckManager : MonoBehaviour, IPointerDownHandler
             WastePileManager.Instance.AddToWastePile(card);
             drawCards.Remove(card);
         }
+        CheckWinCondition();
     }
 
 
@@ -289,7 +290,7 @@ public class HY_DeckManager : MonoBehaviour, IPointerDownHandler
     }
 
 
-    void CheckWinCondition()
+    public void CheckWinCondition()
     {
         if (tableauCards.Count == 0)
         {
@@ -316,30 +317,35 @@ public class HY_DeckManager : MonoBehaviour, IPointerDownHandler
             {
                 if (cards._isFacedUp)
                 {
-                    if (!checkFacedCard.Contains(cards))
+                    if (!checkFacedCard.Contains(cards) && !WastePileManager.Instance.WastePile.Contains(cards))
                     {
                         checkFacedCard.Add(cards);
                     }
                 }
             }
-           
-           foreach (HY_Cards cards in checkFacedCard)
+
+            foreach (HY_Cards cards in checkFacedCard)
             {
+                count = 0;
                 if (WastePileManager.Instance.CanPlayCard(cards))
                 {
                     print("YOU Still Can Play");
                     count++;
-                    return;
-                }
-
-                if (count == 0)
-                {
-                    print("Cant make Move");
+                    print(count);
+                     return;
                 }
                 
             }
 
-           
+            count = 0;
+            if (count == 0)
+            {
+                print("Cant make Move");
+                win_LooseTxt.text = "'Loose'";
+                win_LooseTxt.gameObject.SetActive(true);
+            }
+
+
 
 
 

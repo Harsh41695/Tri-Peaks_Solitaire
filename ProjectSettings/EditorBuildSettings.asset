@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Tri-Peaks_Solitaire.unity
+    guid: c8b1852a45891ae4db9e6b57f494a729
   m_configObjects: {}
